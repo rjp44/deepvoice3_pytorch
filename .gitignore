@@ -1,4 +1,5 @@
 pretrained_models
+*.pth
 deepvoice3_pytorch/version.py
 checkpoints*
 log
