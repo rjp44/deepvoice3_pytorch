@@ -32,6 +32,7 @@ hparams = hparam_tf.hparam.HParams(
 
     # Audio:
     num_mels=80,
+    num_freq=1025,
     fmin=125,
     fmax=7600,
     fft_size=1024,
@@ -49,6 +50,10 @@ hparams = hparam_tf.hparam.HParams(
     # happen depends on min_level_db and ref_level_db, causing clipping noise.
     # If False, assertion is added to ensure no clipping happens.
     allow_clipping_in_normalization=True,
+
+    frame_length_ms=50,
+    frame_shift_ms=12.5,
+
 
     # Model:
     downsample_step=4,  # must be 4 when builder="nyanko"
