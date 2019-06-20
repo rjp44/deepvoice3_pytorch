@@ -4,6 +4,7 @@ foobar*
 run.sh
 README.rst
 pretrained_models
+*.pth
 deepvoice3_pytorch/version.py
 checkpoints*
 log
