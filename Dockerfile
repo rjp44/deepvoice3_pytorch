@@ -6,7 +6,7 @@ ENV preset ./presets/deepvoice3_vctk.json
 ADD . /workspace
 WORKDIR /workspace
 RUN ./modeldef.sh
-RUN pip install -q torch==0.4.1
+RUN pip install -q torch==0.3.1
 RUN pip install -q librosa nltk tensorflow matplotlib cmudict falcon docopt
 RUN pip install -q -e '.[train]'
 RUN python -m nltk.downloader cmudict
