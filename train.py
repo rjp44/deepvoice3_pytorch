@@ -798,7 +798,11 @@ def load_checkpoint(path, model, optimizer, reset_optimizer):
     global global_epoch
 
     print("Load checkpoint from: {}".format(path))
-    checkpoint = torch.load(path)
+    if use_cuda:
+        checkpoint = torch.load(path)
+    else:
+        checkpoint = torch.load(path, map_location='cpu')
+
     model.load_state_dict(checkpoint["state_dict"])
     if not reset_optimizer:
         optimizer_state = checkpoint["optimizer"]
