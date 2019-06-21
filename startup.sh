@@ -10,6 +10,8 @@ if [ "X${PORT}" == "X" ]; then
   PORT=80
 fi
 
+python3 -m nltk.downloader cmudict
+
 COMMAND="python3 server.py --checkpoint=${MODELFILE} --hparams=${PRESETFILE} --port=${PORT}"
 
 exec ${COMMAND}
