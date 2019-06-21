@@ -12,5 +12,6 @@ fi
 
 COMMAND="python3 server.py --checkpoint=${MODELFILE} --hparams=${PRESETFILE} --port=${PORT}"
 
+python3 -m nltk.downloader cmudict
 
 exec ${COMMAND}
