@@ -6,7 +6,10 @@ ls -l workspace
 cd workspace
 . ./modeldef.sh
 
-COMMAND="python3 server.py --checkpoint=${MODELFILE} --hparams=${PRESET} --port=80"
+if [ "X${PORT}" == "X" ]; then
+  PORT=80
+fi
 
+COMMAND="python3 server.py --checkpoint=${MODELFILE} --hparams=${PRESETFILE} --port=${PORT}"
 
 exec ${COMMAND}
