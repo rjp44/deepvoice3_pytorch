@@ -36,7 +36,7 @@ train._frontend =  getattr(frontend, "en")
 fs = hparams.hparams.sample_rate
 hop_length = hparams.hparams.hop_size
 
-def tts(model, text, p=0, speaker_id=None, fast=True, figures=True):
+def tts(model, text, p=2, speaker_id=None, fast=True, figures=True):
   from synthesis import tts as _tts
   waveform, alignment, spectrogram, mel = _tts(model, text, p, speaker_id, fast)
   return waveform
