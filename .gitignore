@@ -1,6 +1,5 @@
 legacy
 notebooks
-foobar*
 run.sh
 README.rst
 pretrained_models
@@ -10,7 +9,6 @@ checkpoints*
 log
 generated
 data
-text
 datasets
 testout
 
