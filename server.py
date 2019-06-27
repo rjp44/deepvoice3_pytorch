@@ -35,6 +35,7 @@ train._frontend =  getattr(frontend, "en")
 # alises
 fs = hparams.hparams.sample_rate
 hop_length = hparams.hparams.hop_size
+hparams.hparams.sample_rate=8000
 
 def tts(model, text, p=2, speaker_id=None, fast=True, figures=True):
   from synthesis import tts as _tts
@@ -110,8 +111,10 @@ class SynthesisResource:
       raise falcon.HTTPBadRequest()
     text = req.params.get('text')
     wav = tts(model, req.params.get('text'), figures=True)
-#    wav = audio.inv_preemphasis(wav)
-#    wav = wav[:audio.find_endpoint(wav)]
+    wav = audio.inv_preemphasis(wav)
+    wav = wav[:audio.find_endpoint(wav)]
+    print(hparams.hparams.sample_rate)
+    wav = librosa.resample(wav, 22000, 8000, fix=True, scale=True)
     out = io.BytesIO()
     audio.save_wav(wav, out)
     res.data = out.getvalue()
