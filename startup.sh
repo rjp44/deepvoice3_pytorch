@@ -6,8 +6,10 @@ ls -l workspace
 cd workspace
 . ./modeldef.sh
 
-if [ "X${PORT}" == "X" ]; then
-  PORT=80
+PORT=9000
+
+if [ "X${DEEPVOICE_PORT}" != "X" ]; then
+  PORT=$DEEPVOICE_PORT
 fi
 
 COMMAND="python3 server.py --checkpoint=${MODELFILE} --hparams=${PRESETFILE} --port=${PORT}"
