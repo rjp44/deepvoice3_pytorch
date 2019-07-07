@@ -118,8 +118,8 @@ class SynthesisResource:
     wav = tts(model, req.params.get('text'), 0, speaker)
     wav = audio.inv_preemphasis(wav)
     wav = wav[:audio.find_endpoint(wav)]
+    wav = librosa.resample(wav, fs, 8000, fix=True, scale=True)
     out = io.BytesIO()
-    wav = librosa.resample(wav, 22000, 8000, fix=True, scale=True)
     audio.save_wav(wav, out)
     res.data = out.getvalue()
     res.content_type = 'audio/wav'
